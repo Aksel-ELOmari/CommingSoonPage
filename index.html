@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/index.css">
+	<title>Document</title>
+</head>
+<style>
+	*{
+	margin: 0;
+	padding: 0;
+}
+body::-webkit-scrollbar{width: 0;}
+body{
+	height: fit-content;
+	width: 100%;
+	color: #fff;
+	background-position: center;
+	background-size: cover;
+	/* background-image: linear-gradient(to top,#121212,rgba(0, 0, 0, 0.867)),url(../images/client.jpg); */
+	overflow-x: hidden;
+}
+body video
+{
+   position: fixed;
+   top: 0;
+   left: 0;
+   height: 100vh;
+   width: 100%;
+   z-index: -1;
+   object-fit: cover;
+}
+.hero
+{
+	width: 80%;
+	height: 100vh;
+	margin: auto;
+	font-family: sans-serif;
+}
+.hero h3
+{
+	margin-top: 30px;
+	
+}
+.hero h1
+{
+	margin: 20px 0 10px 0;
+	font-size: calc(100% * 3);
+}
+.hero p
+{
+	color: aqua;
+	font-size: 20px;
+	margin-bottom: 4px;
+}
+.hero form
+{
+	position: relative;
+	height: 40px;
+	width: max-content;
+	margin:30px 0 10px 0;
+}
+.hero form input 
+{
+	height: 100%;
+	width: 400px;
+	background: transparent;
+	border-radius: 20px;
+	outline: 0;
+	border: 0;
+	background: #ffff;
+	padding: 0 20px;
+	font-weight: bold;
+	color: #000;
+}
+.hero form input::placeholder{font-weight: bold;color: #aaa;}
+.hero form input :focus{outline: 2px aqua solid;}
+.hero form button
+{
+	padding: 14px 30px;
+	border-radius: 20px;
+	background-color: rgb(5, 19, 60);
+	outline: 0;
+	border: 0;
+	color: #fff;
+	cursor: pointer;
+	font-weight: 600;
+} 
+.hero form button:hover
+{
+	background: aqua;
+	transition: .4s;
+	color: #000;
+}
+.hero span
+{
+	font-size: 15px;
+	color: green;
+	margin-left: 30px;
+}
+	.hero
+	{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.second-hero
+	{
+		position: relative;
+		height: 180px;
+		width: 50%;
+		translate: 20% 12%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		backdrop-filter: blur(20px);
+		z-index: 10;
+       background: linear-gradient(23deg,rgb(242, 1, 138),rgb(4, 238, 255));
+	}
+	.second-hero::before
+	{
+		content: '';
+		position: absolute;
+		top: -7%;
+		left: -7%;
+		rotate: 23deg;
+		height: 80px;
+		width: 80px;
+		background: rgb(248, 2, 142);
+		z-index: -1;
+		box-shadow: 2px 23px 6px rgba(27, 21, 21, 0.738);
+		animation:RoatetingY 5s linear infinite forwards;
+	}
+	.second-hero::after
+	{
+		content: '';
+		position: absolute;
+		bottom: -10%;
+		right: -3%;
+		rotate: 23deg;
+		height: 80px;
+		width: 80px;
+		background: rgb(10, 136, 209);
+		z-index: -1;
+		border-radius: 50%;
+		box-shadow: 2px 23px 6px rgba(27, 21, 21, 0.738);
+		animation:RoatetingX 10s linear infinite linear;
+		translate: 160% 180%;
+	}
+	@keyframes RoatetingY {
+		from{
+			rotate: 0deg;
+		}
+		to
+		{
+			rotate: 360deg;
+
+		}
+	}
+	@keyframes RoatetingX  {
+		0%{
+			translate: 160% 180%;
+			rotate: 0deg;
+		}
+		50%
+		{
+			translate: -30% -100%;
+			rotate: 360deg;
+
+		}
+		100%
+		{
+			translate: 70% -130%;
+			rotate: 360deg;
+
+		}
+
+	}
+	.second-hero span
+	{
+		font-weight: 900;
+		color: #fff;
+		font-size: 25px;
+	}
+</style>
+
+<body>
+		<video loop muted autoplay id="BgVideo">
+			<source src="images/video.mp4">
+		</video>
+	<main>
+		<div class="hero container">
+		   <div class="first-hero">
+				<h3>Comming Soon!</h3>
+				<h1>Our Brand New Website <br> Is on it's Way.</h1>
+				<p>Subscribe for more details</p>
+				<form action="get" id="form">
+					<input type="email" name="email" id="email-header">
+					<button type="submit">send</button>
+				</form>
+				<span class="alert">thanks for subscribing.</span>
+		   </div>
+		   <div class="second-hero">
+				<span id="Hour"></span>
+			   <span>:</span>
+			   <span id="Minute"></span>
+			   <span>:</span>
+			   <span id="Second"></span>
+		   </div>
+		</div>
+	</main>
+
+	<script>
+		let Hour = document.getElementById('Hour');
+		let Min = document.getElementById('Minute');
+		let Sec = document.getElementById('Second');
+		
+        setInterval(() => {
+			let CertainTime = new Date();
+			if(CertainTime.getHours()<10){Hour.innerHTML = '0' + CertainTime.getHours()}else{Hour.innerHTML = CertainTime.getHours()};
+			if(CertainTime.getMinutes()<10){Min.innerHTML = '0' + CertainTime.getHours()}else{Min.innerHTML = CertainTime.getMinutes()};
+			if(CertainTime.getSeconds()<10){Sec.innerHTML = '0' + CertainTime.getHours()}else{Sec.innerHTML = CertainTime.getSeconds()};
+		}, 1000);
+		
+		const form = document.querySelector('form');
+		document.querySelector('.alert').style.display = 'none';
+		document.querySelector('input').addEventListener('submit',()=>{
+			document.querySelector('.alert').style.display = 'block';
+			setTimeout(() => {
+				document.querySelector('.alert').style.display = 'none';
+			}, 2000);
+		})
+
+	</script>
+
+	<script src="js/index.js"></script>
+	<script src="js/jquery-3.4.1.min.js"></script>
+</body>
+</html>
