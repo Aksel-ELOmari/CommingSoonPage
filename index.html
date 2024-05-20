@@ -32,13 +32,16 @@ body video
    z-index: -1;
    object-fit: cover;
 }
-.container
+.container,hero
 {
    flex-direction:row;
 }
 @media screen (max-width:728px)
 {
-    flex-direction:column;
+	.container,hero
+	{
+	  flex-direction:column;
+	}
 }
 .hero
 {
