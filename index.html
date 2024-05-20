@@ -188,7 +188,7 @@ body video
 
 <body>
 		<video loop muted autoplay id="BgVideo">
-			<source src="images/video.mp4">
+			<source src="./video.mp4">
 		</video>
 	<main>
 		<div class="hero container">
@@ -234,7 +234,31 @@ body video
 		})
 
 	</script>
-
+	<script type="module">
+	  // Import the functions you need from the SDKs you need
+	  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+	  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+	  // TODO: Add SDKs for Firebase products that you want to use
+	  // https://firebase.google.com/docs/web/setup#available-libraries
+	
+	  // Your web app's Firebase configuration
+	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	  const firebaseConfig = {
+	    apiKey: "AIzaSyAtxMMHXCApK15w67sd6bLuOgp7C2xeUMo",
+	    authDomain: "movies-app-196f6.firebaseapp.com",
+	    databaseURL: "https://movies-app-196f6-default-rtdb.firebaseio.com",
+	    projectId: "movies-app-196f6",
+	    storageBucket: "movies-app-196f6.appspot.com",
+	    messagingSenderId: "1028699259925",
+	    appId: "1:1028699259925:web:91a209c8baf05e39b47a1c",
+	    measurementId: "G-LGQ024RWDH"
+	  };
+	
+	  // Initialize Firebase
+	  const app = initializeApp(firebaseConfig);
+	  const analytics = getAnalytics(app);
+	</script>
+	
 	<script src="js/index.js"></script>
 	<script src="js/jquery-3.4.1.min.js"></script>
 </body>
